@@ -1,4 +1,3 @@
-
 private Item[] store = {new Item(184,14),
         new Item(196,60),
         new Item(206,31),
@@ -24,10 +23,7 @@ public int linearSearch(int catNumToFind)
 {
     for(int i = 0; i < store.length; i++)
     {
-        if(store[i].getCatNum() == catNumToFind)
-        {
-            return store[i].getInventory();
-        }
+        if(store[i].getCatNum() == catNumToFind) {return store[i].getInventory();}
     }
     return -1;
 }
@@ -38,20 +34,11 @@ public int binarySearch(int catNumToFind)
     while(low <= high)
     {
         int guess = (high + low)/2;
-        if(store[guess].getCatNum() == catNumToFind)
+        if(store[guess].getCatNum() == catNumToFind) {return store[guess].getInventory();}
+        else 
         {
-            return store[guess].getInventory();
-        }
-        else
-        {
-            if(store[guess].getCatNum() < catNumToFind)
-            {
-                low = guess + 1;
-            } 
-            if(store[guess].getCatNum() > catNumToFind)
-            {
-                high = guess - 1;
-            } 
+            if(store[guess].getCatNum() < catNumToFind){low = guess + 1;} 
+            if(store[guess].getCatNum() > catNumToFind){high = guess - 1;} 
         }
     }   
     return -1;    
@@ -59,26 +46,11 @@ public int binarySearch(int catNumToFind)
 public int binarySearch(int catNumToFind,int nLow, int nHigh)
 {
     int nGuess = (nLow + nHigh)/2;
-    if (nLow > nHigh)
-    {
-        return -1;
-    }   
-    if (store[nGuess].getCatNum() == catNumToFind)
-    {
-        return store[nGuess].getInventory();
-    }
-    if (store[nGuess].getCatNum() > catNumToFind)
-    {
-        return binarySearch(catNumToFind, nLow, nGuess - 1);
-    }
-    else if (store[nGuess].getCatNum() < catNumToFind)
-    {
-        return binarySearch(catNumToFind, nGuess + 1, nHigh);
-    }
-    else
-    {
-        return -1;
-    }           
+    if (nLow > nHigh) {return -1;}   
+    if (store[nGuess].getCatNum() == catNumToFind) {return store[nGuess].getInventory();}
+    if (store[nGuess].getCatNum() > catNumToFind) {return binarySearch(catNumToFind, nLow, nGuess - 1);}
+    else if (store[nGuess].getCatNum() < catNumToFind) {return binarySearch(catNumToFind, nGuess + 1, nHigh);}
+    else {return -1;}           
 }
 public void setup()
 {
